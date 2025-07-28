@@ -251,7 +251,7 @@ export default function Dashboard() {
       </Navbar>
       <div className="container mb-5">{renderContent()}</div>
       <footer className="text-center py-3 bg-dark text-light"
-        style={{   position: 'fixed',  bottom: 0, width: '100%' }}>
+        style={{ position: 'fixed', bottom: 0, width: '100%' }}>
         <small>© 2025 Tu Empresa. Todos los derechos reservados.</small>
       </footer>
     </>
