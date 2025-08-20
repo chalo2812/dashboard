@@ -1,5 +1,6 @@
 // eslint-disable-next-line
 import React, { useState, useEffect } from 'react';
+
 import { FaMicrochip } from 'react-icons/fa';
 
 import {
@@ -7,14 +8,11 @@ import {
   Nav,
   Container,
   Card,
-  ProgressBar,
   Table,
   Button,
   Spinner,
 } from 'react-bootstrap';
 import {
-  BarChart,
-  Bar,
   XAxis,
   YAxis,
   Tooltip,
@@ -24,6 +22,8 @@ import {
   LineChart,
   Line,
 } from 'recharts';
+import Inicio from './Inicio';
+import Spring from './Spring';
 
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
 
@@ -47,17 +47,6 @@ export default function Dashboard() {
       });
   };
 
-  const epicProgress = [
-    { name: 'Firmware para el Rover', progress: 40 },
-    { name: 'Roadmap para Ingeniería', progress: 33 },
-    { name: 'Merchandising para NASA', progress: 33 },
-    { name: 'Starship en Plutón', progress: 0 },
-  ];
-
-  const sprintVelocity = [
-    { name: 'Sprint 1', Comprometido: 4, Completado: 3, Reabierto: 1 },
-    { name: 'Sprint 2', Comprometido: 5, Completado: 5, Reabierto: 0 },
-  ];
 
   const projectStatus = [
     { name: 'EN CURSO', value: 5 },
@@ -77,28 +66,12 @@ export default function Dashboard() {
     { assignee: 'Alguien', task: 'Crear notificación por correo', due: 'Mié, 06 Dic' },
   ];
 
-  const sprintGoals = [
-    'Implementar barreras inteligentes',
-    'Presentar el roadmap',
-    'Alinear la página interna',
-  ];
 
   const renderContent = () => {
     switch (activeTab) {
       case 'inicio':
         return (
-          <div className="row">
-            {epicProgress.map((epic, index) => (
-              <div className="col-md-6 mb-4" key={index}>
-                <Card>
-                  <Card.Body>
-                    <Card.Title>{epic.name}</Card.Title>
-                    <ProgressBar now={epic.progress} label={`${epic.progress}%`} />
-                  </Card.Body>
-                </Card>
-              </div>
-            ))}
-          </div>
+          <Inicio />
         );
       case 'tareas':
         return (
@@ -135,36 +108,7 @@ export default function Dashboard() {
         );
       case 'sprint':
         return (
-          <div className="row">
-            <div className="col-md-6 mb-4">
-              <Card>
-                <Card.Body>
-                  <Card.Title>Objetivos del Sprint</Card.Title>
-                  <ul>
-                    {sprintGoals.map((goal, i) => (
-                      <li key={i}>{goal}</li>
-                    ))}
-                  </ul>
-                </Card.Body>
-              </Card>
-            </div>
-
-            <div className="col-md-6 mb-4">
-              <Card>
-                <Card.Body>
-                  <Card.Title>Velocidad del Sprint</Card.Title>
-                  <BarChart width={300} height={200} data={sprintVelocity}>
-                    <XAxis dataKey="name" />
-                    <YAxis />
-                    <Tooltip />
-                    <Bar dataKey="Comprometido" fill="#8884d8" />
-                    <Bar dataKey="Completado" fill="#82ca9d" />
-                    <Bar dataKey="Reabierto" fill="#ffc658" />
-                  </BarChart>
-                </Card.Body>
-              </Card>
-            </div>
-          </div>
+          <Spring />
         );
       case 'configuracion':
         return (
