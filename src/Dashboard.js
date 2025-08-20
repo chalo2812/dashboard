@@ -1,7 +1,7 @@
 // eslint-disable-next-line
 import React, { useState, useEffect } from 'react';
-
 import { FaMicrochip } from 'react-icons/fa';
+//import axios from 'axios';
 
 import {
   Navbar,
@@ -34,7 +34,7 @@ export default function Dashboard() {
 
   const actualizarJira = () => {
     setLoading(true);
-    fetch('https://tu-api-jira.com/issues') // Reemplazá esta URL
+    fetch('https://systechsa.atlassian.net/rest/api/latest/issues') // Reemplazá esta URL
       .then((res) => res.json())
       .then((data) => {
         console.log('Datos desde JIRA:', data);
